@@ -75,13 +75,23 @@ int getNiveauChlore()
 void loop() {
 
   getCapteurPpm();
+  
+  
+  
   chlore_necessaire = getChloreNecessaire();
   boolean ensemble = true;
   while (ensemble == true){
   // peut etre il va falloir faire des variables pour les 200ml;ou garder 0.2 litres donc garder tout le programme en litre
   if (chlore_necessaire < 0.2)
   {
-    delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
+    
+    
+   // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
+    
+    delay(3600000);
+    
+    
+    
     ensemble = false;
     break;
   }
