@@ -8,7 +8,11 @@ float chlore_necessaire;
 
 
 *****************************************************************
-int x = 20;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
+int fillWarn = 20;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
+int dispDelay = 3600000;
+
+
+
 *****************************************************************
 
 int pourcentage; //pourcentage de chlore dans reservoir
@@ -47,7 +51,7 @@ int getChloreNecessaire()
 // fonction pour allumer la lumiere sur le reservoir
 void allumerLumiere(int pourcentage)
 {
- if(pourcentage<x) digitalWrite(7, HIGH);
+ if(pourcentage<fillWarn) digitalWrite(7, HIGH);
  else digitalWrite(7, LOW);
  //Allume la lumiere pour combien de secondes ?
  //Moyen de definir combien de seconde on veut que la lumiere reste allume
@@ -88,10 +92,8 @@ void loop() {
     
    // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
     
-    delay(3600000);
-    
-    
-    
+    delay(dispDelay);// delai de une heure si le montant à ajouter est moins de 200mL
+   
     ensemble = false;
     break;
   }
