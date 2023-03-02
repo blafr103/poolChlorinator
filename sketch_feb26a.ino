@@ -1,43 +1,4 @@
-##############################################################################################################################################
-// Le code Arduino ci-dessous calcul la quantité de chlore en pourcentage à l’aide du capteur ultrason.
-// #include <NewPing.h>
 
-
-// #define TRIGGER_PIN  13  // Arduino pin tied to trigger pin on the ultrasonic senso
-// #define ECHO_PIN     2  // Arduino pin tied to echo pin on the ultrasonic sensor.
-// #define MAX_DISTANCE 100 // Maximum distance we want to ping for (in centimeters). 
-
-
-// float distance;  //distance entre detecteur et chlore
-// float niveau;   //cm de chlore dans le reservoir
-// int hauteur=15; //hauteur du reservoir
-// int pourcentage; //pourcentage de chlore dans reservoir
-
-
-// NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
-
-
-// void setup() {
-// //  pinMode(7,OUTPUT);
-// //  Serial.begin(115200); // Open serial monitor at 115200 baud to see ping results.
-// }
-// void loop() {
-//  delay(50);                     // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
-//  Serial.print("Niveau de chlore: ");
-//  distance = sonar.ping_cm();      // Send ping, get distance in cm and print result (0 = outside set distance range)
-//  niveau = hauteur-distance;
-//  pourcentage = (niveau/hauteur)*100;
-//  Serial.print(pourcentage);
-//  Serial.println("%");
-
-
-//allumerLumiere(pourcentage);
-
-/*
- if(pourcentage<20) digitalWrite(7, HIGH);
- else digitalWrite(7, LOW);
-*/
-##############################################################################################################################################
 int alerte_nbr_jours;
 float ppm_interval_inferieur;
 float ppm_interval_superieur;
@@ -45,6 +6,10 @@ float niveau_chlore;
 float moyenne_chlore_par_jour = xxx; //Il faut trouver la valeur predefinie
 float chlore_necessaire;
 
+
+*****************************************************************
+int x = 20;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
+*****************************************************************
 
 int pourcentage; //pourcentage de chlore dans reservoir
 float distance;  //distance entre detecteur et chlore
@@ -82,7 +47,7 @@ int getChloreNecessaire()
 // fonction pour allumer la lumiere sur le reservoir
 void allumerLumiere(int pourcentage)
 {
- if(pourcentage<20) digitalWrite(7, HIGH);
+ if(pourcentage<x) digitalWrite(7, HIGH);
  else digitalWrite(7, LOW);
  //Allume la lumiere pour combien de secondes ?
  //Moyen de definir combien de seconde on veut que la lumiere reste allume
