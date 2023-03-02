@@ -79,44 +79,45 @@ int getNiveauChlore()
 void loop() {
 
   getCapteurPpm();
-  
-  
-  
   chlore_necessaire = getChloreNecessaire();
-  boolean ensemble = true;
+  
+  
+  bool ensemble = true;
+  
   while (ensemble == true){
   // peut etre il va falloir faire des variables pour les 200ml;ou garder 0.2 litres donc garder tout le programme en litre
-  if (chlore_necessaire < 0.2)
-  {
-    
-    
-   // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
-    
-    delay(dispDelay);// delai de une heure si le montant à ajouter est moins de 200mL
-   
-    ensemble = false;
-    break;
-  }
-  else{
-    niveau_chlore = getNiveauChlore();
-    if (niveau_chlore > chlore_necessaire){
-      allumerPompe();
-      // est ce qu'on mentionne le processus pour le nombre de litres restants
-      if(>alerte_nbr_jours){
-        delay(60UL * 60UL * 1000UL);
-        ensemble = false;
-        break
+    if (chlore_necessaire < 0.2){
+
+     // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
+
+      delay(dispDelay);// delai de une heure si le montant à ajouter est moins de 200mL
+
+      ensemble = false;
+      break;
+      
+    }else{
+      
+      niveau_chlore = getNiveauChlore();
+      
+      if (niveau_chlore > chlore_necessaire){
+        allumerPompe();
+        // est ce qu'on mentionne le processus pour le nombre de litres restants
+        if(>alerte_nbr_jours){
+          delay(60UL * 60UL * 1000UL);
+          ensemble = false;
+          break;
+        }
+        
+        if(<alerte_nbr_jours){
+          allumerLumiere();
+           //allumer la lumiere et apres il faut arreter le programmes (break) ou recommencer toute la boucle ?
+        }
       }
-      if(<alerte_nbr_jours){
+      if (niveau_chlore < chlore_necessaire){
         allumerLumiere();
-         //allumer la lumiere et apres il faut arreter le programmes (break) ou recommencer toute la boucle ?
+        //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
+        // ou ca peut etre inclus dans la fonction allumerLumiere()
       }
     }
-    if (niveau_chlore < chlore_necessaire){
-      allumerLumiere();
-      //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
-      // ou ca peut etre inclus dans la fonction allumerLumiere()
-    }
-  }
   }
 }
