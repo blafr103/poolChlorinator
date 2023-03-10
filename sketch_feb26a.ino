@@ -8,7 +8,7 @@ float chlore_necessaire;
 
 
 *****************************************************************
-int fillWarn = 20;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
+int fillWarn = 15;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
 int dispDelay = 3600000;
 
 
@@ -46,6 +46,9 @@ int getChloreNecessaire()
 {
   // il faudra convertir en float
   // est ce qu'il vaut mieux pas utiliser le getNiveauChlore et voire le niveau necessaire en fonctin de getNiveauChlore ?
+  
+  //faire le calcule en prennant la valuer de PH/PPM donnée par getCapteurPpm()
+  
 }
 
 // fonction pour allumer la lumiere sur le reservoir
@@ -58,6 +61,7 @@ void allumerLumiere(int pourcentage)
 }
 
 // fonction pour allumer la pompe pour un temps calcule
+//allume aussi une lumiere en meme temps que la pompe est active
 void allumerPompe()
 {
 
