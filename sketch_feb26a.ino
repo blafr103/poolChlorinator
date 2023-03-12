@@ -80,27 +80,28 @@ int getNiveauChlore()
 }
 
 
+//Nouveau code pour la fonction loop()
+int = valeurDeGetCapteurPpm;
+int = chlore_necessaire;
+bool ensemble = false;
+
 void loop() {
-
-  getCapteurPpm();
-  chlore_necessaire = getChloreNecessaire();
   
-  
-  bool ensemble = true;
-  
-  while (ensemble){
-  // peut etre il va falloir faire des variables pour les 200ml;ou garder 0.2 litres donc garder tout le programme en litre
-    if (chlore_necessaire < 0.2){
-
-     // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
+  while (true) {
+   
+    if (chlore_necessaire < 0.2) {
+       // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
 
       delay(dispDelay);// delai de une heure si le montant à ajouter est moins de 200mL
 
-      ensemble = false;
+      ensemble = true;
       break;
-      
-    }else{
-      
+
+    }
+    
+    if (chlore_necessaire > 0.2){
+      // niveau_chlore = getNiveauChlore();
+
       niveau_chlore = getNiveauChlore();
       
       if (niveau_chlore > chlore_necessaire){
@@ -108,7 +109,7 @@ void loop() {
         // est ce qu'on mentionne le processus pour le nombre de litres restants
         if(>alerte_nbr_jours){
           delay(60UL * 60UL * 1000UL);
-          ensemble = false;
+          ensemble = true;
           break;
         }
         
@@ -123,5 +124,19 @@ void loop() {
         // ou ca peut etre inclus dans la fonction allumerLumiere()
       }
     }
+
+    
+    // le break est important ici
+      break;
+    }
   }
+}
+
+int main() {
+  do {
+    valeurDeGetCapteurPpm = getCapteurPpm();
+    chlore_necessaire = getChloreNecessaire();
+    ensemble = false;
+    loop();
+  } while (ensemble);
 }
