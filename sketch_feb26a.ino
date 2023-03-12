@@ -10,8 +10,7 @@ float chlore_necessaire;
 *****************************************************************
 int fillWarn = 15;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
 int dispDelay = 3600000;
-
-
+int poolVolume = ; //volume de la piscine en US gallon
 
 *****************************************************************
 
@@ -36,19 +35,21 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and
 
 
 // fonction pour lire le capteur de ppm
-int getCapteurPpm()
+int getCapteurPpm() //maybe PPM, maybe PH, TBD************
 {
   // Cette fonction va permettre de lire la valeur du capteur ppm. Elle devra donc retourner un resultat en float.
+    
+    return ph;
 }
 
-// fonction pour calculer le chlore necessaire pour equilibrer le ppm
-int getChloreNecessaire()
+// fonction pour calculer le chlore necessaire pour augmenter le ppm de le montant necessaire
+float getChloreNecessaire()
 {
   // il faudra convertir en float
-  // est ce qu'il vaut mieux pas utiliser le getNiveauChlore et voire le niveau necessaire en fonctin de getNiveauChlore ?
-  
   //faire le calcule en prennant la valuer de PH/PPM donnée par getCapteurPpm()
+  int PH = getCapteurPpm();
   
+  return (7.5 - PH)*(poolVolume)*0.002;
 }
 
 // fonction pour allumer la lumiere sur le reservoir
