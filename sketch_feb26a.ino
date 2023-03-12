@@ -10,7 +10,7 @@ float chlore_necessaire;
 *****************************************************************
 int fillWarn = 15;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
 int dispDelay = 3600000;
-int poolVolume = ; //volume de la piscine en US gallon
+int poolVolume = 14366; //volume de la piscine en US gallon
 
 *****************************************************************
 
