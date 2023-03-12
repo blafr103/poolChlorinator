@@ -88,7 +88,7 @@ void loop() {
   
   bool ensemble = true;
   
-  while (ensemble == true){
+  while (ensemble){
   // peut etre il va falloir faire des variables pour les 200ml;ou garder 0.2 litres donc garder tout le programme en litre
     if (chlore_necessaire < 0.2){
 
