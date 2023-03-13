@@ -3,16 +3,15 @@ int alerte_nbr_jours;
 float ppm_interval_inferieur;
 float ppm_interval_superieur;
 float niveau_chlore;
-float moyenne_chlore_par_jour = xxx; //Il faut trouver la valeur predefinie
 float chlore_necessaire;
 
 
-*****************************************************************
+//*****************************************************************
 int fillWarn = 15;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
 int dispenseDelay = 3600000; //1hr delay
 int poolVolume = 14366; //volume de la piscine en US gallon
 int pumpRate = 0; //débit de la pompe
-*****************************************************************
+//*****************************************************************
 
 int pourcentage; //pourcentage de chlore dans reservoir
 float distance;  //distance entre detecteur et chlore
@@ -94,8 +93,6 @@ int getNiveauChlore()
 
 
 //Nouveau code pour la fonction loop()
-int = valeurDeGetCapteurPpm;
-int = chlore_necessaire;
 bool ensemble = false;
 
 void loop() {
@@ -152,7 +149,6 @@ void loop() {
 
 int main() {
   do {
-    valeurDeGetCapteurPpm = getCapteurPpm();
     chlore_necessaire = getChloreNecessaire();
     ensemble = false;
     loop();
