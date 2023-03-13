@@ -13,20 +13,20 @@ int poolVolume = 14366; //volume de la piscine en US gallon
 int pumpRate = 0; //débit de la pompe
 //*****************************************************************
 
-int pourcentage; //pourcentage de chlore dans reservoir
-float distance;  //distance entre detecteur et chlore
-float niveau;   //cm de chlore dans le reservoir
-int hauteur=15; //hauteur du reservoir
-pourcentage = (niveau/hauteur)*100;
-distance = sonar.ping_cm();      // Send ping, get distance in cm and print result (0 = outside set distance range)
-niveau = hauteur-distance;
 
-NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 #include <NewPing.h>
 #define TRIGGER_PIN  13  // Arduino pin tied to trigger pin on the ultrasonic senso
 #define ECHO_PIN     2  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 100 // Maximum distance we want to ping for (in centimeters).
 #define RELAY_PIN A5 // the Arduino pin, which connects to the IN pin of relay, for the pump
+
+NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
+
+
+int hauteur=15; //hauteur du reservoir
+float distance = sonar.ping_cm();      // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
+float niveau = hauteur-distance;//cm de chlore dans le reservoir
+float pourcentage = (niveau/hauteur)*100; //pourcentage de chlore dans reservoir
 
 pinMode(RELAY_PIN, OUTPUT);// initialize digital pin A5 as an output.
 
