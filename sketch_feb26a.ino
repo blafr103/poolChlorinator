@@ -9,9 +9,9 @@ float chlore_necessaire;
 
 *****************************************************************
 int fillWarn = 15;  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume
-int dispDelay = 3600000;
+int dispenseDelay = 3600000; //1hr delay
 int poolVolume = 14366; //volume de la piscine en US gallon
-
+int pumpRate = 0; //débit de la pompe
 *****************************************************************
 
 int pourcentage; //pourcentage de chlore dans reservoir
@@ -27,6 +27,9 @@ NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and
 #define TRIGGER_PIN  13  // Arduino pin tied to trigger pin on the ultrasonic senso
 #define ECHO_PIN     2  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 100 // Maximum distance we want to ping for (in centimeters).
+#define RELAY_PIN A5 // the Arduino pin, which connects to the IN pin of relay, for the pump
+
+pinMode(RELAY_PIN, OUTPUT);// initialize digital pin A5 as an output.
 
 // Lis les valeurs du Analog pin specifie - Lis les valeurs de l'utilisateur 
   alerte_nbr_jours = analogRead(A1) // # de jour pour alerter l'utilisateur avant que le reservoir ne soit vide
@@ -47,8 +50,9 @@ float getChloreNecessaire()
 {
   // il faudra convertir en float
   //faire le calcule en prennant la valuer de PH/PPM donnée par getCapteurPpm()
-  int PH = getCapteurPpm();
+  //retourne une valeur en OZ
   
+  int PH = getCapteurPpm();
   return (7.5 - PH)*(poolVolume)*0.002;
 }
 
@@ -63,9 +67,13 @@ void allumerLumiere(int pourcentage)
 
 // fonction pour allumer la pompe pour un temps calcule
 //allume aussi une lumiere en meme temps que la pompe est active
-void allumerPompe()
+void allumerPompe(int x)
 {
 
+  digitalWrite(RELAY_PIN, HIGH); // turn on pump for x milliseconds
+  delay(x);
+  digitalWrite(RELAY_PIN, LOW);  // turn off pump 
+    
 }
 
 // fonction pour detecter le niveau de chlore dans le reservoir
@@ -89,11 +97,12 @@ bool ensemble = false;
 void loop() {
   
   while (true) {
-   
+    
+    chlore_necessaire = getChloreNecessaire()*0.0295735;//conversion from Oz to L
+    
     if (chlore_necessaire < 0.2) {
-       // delay(60UL * 60UL * 1000UL);  //delai de une heure : 60 minutes each of 60 seconds each of 1000 milliseconds all unsigned longs
 
-      delay(dispDelay);// delai de une heure si le montant à ajouter est moins de 200mL
+      delay(dispenseDelay);// delai de une heure si le montant à ajouter est moins de 200mL
 
       ensemble = true;
       break;
@@ -101,15 +110,19 @@ void loop() {
     }
     
     if (chlore_necessaire > 0.2){
-      // niveau_chlore = getNiveauChlore();
 
       niveau_chlore = getNiveauChlore();
       
       if (niveau_chlore > chlore_necessaire){
-        allumerPompe();
+        
+        int time = chlore_necessaire*1000/pumpRate;//calculate how long pump turns on (ms)
+        allumerPompe(time);
+        
+        
+        
         // est ce qu'on mentionne le processus pour le nombre de litres restants
         if(>alerte_nbr_jours){
-          delay(60UL * 60UL * 1000UL);
+          delay(dispenseDelay);
           ensemble = true;
           break;
         }
