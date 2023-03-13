@@ -37,7 +37,7 @@ pinMode(RELAY_PIN, OUTPUT);// initialize digital pin A5 as an output.
 
 
 // fonction pour lire le capteur de ppm
-int getCapteurPpm() //maybe PPM, maybe PH, TBD************
+float getCapteurPpm() //maybe PPM, maybe PH, TBD************
 {
   // Cette fonction va permettre de lire la valeur du capteur ppm. Elle devra donc retourner un resultat en float.
     
