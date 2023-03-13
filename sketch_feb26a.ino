@@ -67,13 +67,13 @@ void allumerLumiere(int pourcentage)
 
 // fonction pour allumer la pompe pour un temps calcule
 //allume aussi une lumiere en meme temps que la pompe est active
-void allumerPompe(int x)
+void allumerPompe(int timeX)
 {
   digitalWrite(8, HIGH); //turn on light indicating pump is active
     
     
   digitalWrite(RELAY_PIN, HIGH); // turn on pump for x milliseconds
-  delay(x);
+  delay(timeX);
   digitalWrite(RELAY_PIN, LOW);  // turn off pump 
   
   digitalWrite(8, LOW); //turn off light indicating pump is off
