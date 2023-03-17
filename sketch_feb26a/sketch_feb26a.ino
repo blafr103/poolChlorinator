@@ -25,6 +25,7 @@ int hauteur=44;                                     //hauteur du reservoir (cm)
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 
 // fonction pour lire le capteur de ppm
+//*************************TO DO********************
 float getCapteurPpm()                               //maybe PPM, maybe PH, TBD************
 {   
     float ph = 0;
@@ -35,7 +36,8 @@ float getCapteurPpm()                               //maybe PPM, maybe PH, TBD**
 // fonction pour calculer le chlore necessaire pour augmenter le ppm de le montant necessaire
 float getChloreNecessaire()
 {
-  //faire le calcule en prennant la valuer de PH/PPM donnée par getCapteurPpm(), retourne une valeur en Oz  
+  //faire le calcule en prennant la valuer de PH donnée par getCapteurPpm(), retourne une valeur en Oz  
+  //**********on assume sensor PH, et non PPM
   int PH = getCapteurPpm();
   return (7.5 - PH)*(poolVolume)*0.002;
 }
@@ -69,8 +71,8 @@ void allumerPompe(int timeX)
 int getNiveauChlore()
 {
   pinMode(7,OUTPUT);
-  Serial.begin(115200);           // Open serial monitor at 115200 baud to see ping results.
-  delay(50);                     // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
+  Serial.begin(115200);                       // Open serial monitor at 115200 baud to see ping results.
+  delay(50);                                  // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
 }
 
 
@@ -85,7 +87,7 @@ void loop(int pourcentage) {
     
     if (chlore_necessaire < 0.2) {
 
-      delay(dispenseDelay);                              // delai de une heure si le montant à ajouter est moins de 200mL
+      delay(dispenseDelay);                             // delai de une heure si le montant à ajouter est moins de 200mL
 
       ensemble = true;
       break;
@@ -98,7 +100,7 @@ void loop(int pourcentage) {
       
       if (chloreRestant > chlore_necessaire){ 
                
-        int daysLeft = (chloreRestant/dailyAV) - 1;
+        int daysLeft = (chloreRestant/dailyAV) - 1;   //dailyAV to be more accurately defined, algo to calculate how many days worth of chlorine left
           
         if(daysLeft<=alerte_nbr_jours){
           allumerLumiere(pourcentage);
