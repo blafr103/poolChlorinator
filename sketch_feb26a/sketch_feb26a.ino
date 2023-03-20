@@ -108,12 +108,7 @@ void loop(int pourcentage) {
         
         int time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
         allumerPompe(time);                           //active la pompe
-      } else {                                        //if there is not enough chlorine left in reservoir for current pump injection
-       
-                                                      
-                                                      //turn off system until refill
-        
-      }
+      } 
       
       if (chloreRestant < chlore_necessaire){
         allumerLumiere(pourcentage);                  //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
