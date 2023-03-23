@@ -5,7 +5,7 @@
 #define TRIGGER_PIN  13                             // Arduino pin tied to trigger pin on the ultrasonic senso
 #define ECHO_PIN     2                              // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 100                            // Maximum distance we want to ping for (in centimeters).
-#define RELAY_PIN A5                                // the Arduino pin, which connects to the IN pin of relay, for the pump
+#define RELAY_PIN 5                                // the Arduino pin, which connects to the IN pin of relay, for the pump
 
 float ppm_interval_inferieur;
 float ppm_interval_superieur;
@@ -55,7 +55,7 @@ void allumerLumiere(int pourcentage)
 //allume aussi une lumiere en meme temps que la pompe est active
 void allumerPompe(int timeX)
 {
-  pinMode(RELAY_PIN, OUTPUT);                  // initialize digital pin A5 as an output.
+  pinMode(RELAY_PIN, OUTPUT);                  // initialize digital pin as an output.
 
   digitalWrite(8, HIGH);                      //turn on light indicating pump is active
     
@@ -107,6 +107,7 @@ void loop(int pourcentage) {
         }
         
         int time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
+         
         allumerPompe(time);                           //active la pompe
       } 
       
