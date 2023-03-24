@@ -67,15 +67,6 @@ void allumerPompe(int timeX)
 }
 
 
-// fonction pour detecter le niveau de chlore dans le reservoir
-int getNiveauChlore()
-{
-  pinMode(7,OUTPUT);
-  Serial.begin(115200);                       // Open serial monitor at 115200 baud to see ping results.
-  delay(50);                                  // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
-}
-
-
 //Nouveau code pour la fonction loop()
 bool ensemble = false;
 
@@ -87,6 +78,9 @@ void loop(int pourcentage) {
     
     chlore_necessaire = getChloreNecessaire()*0.0295735;//conversion from Oz to L
     
+      
+      
+      
     if (chlore_necessaire < 0.2) {
 
       delay(dispenseDelay);                             // delai de une heure si le montant à ajouter est moins de 200mL
@@ -95,11 +89,16 @@ void loop(int pourcentage) {
       break;
 
     }   
+      
+      
+      
     
     if (chlore_necessaire > 0.2){
 
       float chloreRestant =pourcentage1*(reservoirFull)/100;
       
+        
+        
       if (chloreRestant > chlore_necessaire){ 
                
         int daysLeft = (chloreRestant/dailyAV) - 1;   //dailyAV to be more accurately defined, algo to calculate how many days worth of chlorine left
@@ -113,11 +112,8 @@ void loop(int pourcentage) {
         allumerPompe(time);                           //active la pompe
       } 
       
-      if (chloreRestant < chlore_necessaire){
-        allumerLumiere(pourcentage1);                  //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
-                                                      // ou ca peut etre inclus dans la fonction allumerLumiere()
-      }
     }
+       
                           // le break est important ici
       break;
   }
@@ -128,16 +124,21 @@ int main() {
   do {
     
     //*************code pour niveau de reservoir******************
+    pinMode(7,OUTPUT);
+    Serial.begin(115200);                       // Open serial monitor at 115200 baud to see ping results.
+    delay(50);                                  // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
     float distance = sonar.ping_cm();                   // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
     float niveau = hauteur-distance;                    //cm de chlore dans le reservoir
     float pourcentage = (niveau/hauteur)*100;           //pourcentage de chlore dans reservoir
     //**************************************************************
-    
+   
+    allumerLumiere(pourcentage); // checks reservoir level to see if the fill warning light should be turned on 
+      
     if(pourcentage > 5){                                //if there is enough chlorine left in reservoir for current pump injection
       chlore_necessaire = getChloreNecessaire();
       ensemble = false;
       loop(pourcentage);
-    }
+    } //if there is NOT enough chlorine left in reservoir for current pump injection, system will keep looping in the Do...While and continuously check reservoir until it is filled again
     
-  } while (ensemble);
+  } while (true);
 }
