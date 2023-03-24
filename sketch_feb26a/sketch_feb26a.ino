@@ -41,15 +41,15 @@ float getChloreNecessaire()
     //int PH = getCapteurPpm();
     int PH = 6; //for test
     
-    return (7.5 - PH)*(poolVolume)*0.002;
+    return (7.5 - PH)*(poolVolume)*0.002;      
 }
 
 
 // fonction pour allumer la lumiere sur le reservoir, quand il est moins qu'un certain niveau : pourcentage<fillWarn
 void allumerLumiere(int pourcentage)
 {
- if(pourcentage<fillWarn) digitalWrite(7, HIGH);
- else digitalWrite(7, LOW);
+ if(pourcentage<fillWarn) digitalWrite(7, HIGH); //turn light on if reservoir below certain level
+ else digitalWrite(7, LOW);                      //turn light off if reservoir above certain level
 }
 
 
@@ -57,23 +57,24 @@ void allumerLumiere(int pourcentage)
 //allume aussi une lumiere en meme temps que la pompe est active
 void allumerPompe(int timeX)
 {
-  Serial.print("PUMP ON"); 
+  Serial.print("PUMP ON"); //test
 
-  //digitalWrite(8, HIGH);                      //turn on light indicating pump is active
+  digitalWrite(8, HIGH);                      //turn on light indicating pump is active
     
   digitalWrite(RELAY_PIN, HIGH);              // turn on pump for x milliseconds
   delay(5000);
   digitalWrite(RELAY_PIN, LOW);               // turn off pump 
   
-  //digitalWrite(8, LOW);                       //turn off light indicating pump is off
-  Serial.print("PUMP OFF"); 
+  digitalWrite(8, LOW);                       //turn off light indicating pump is off
+  Serial.print("PUMP OFF"); //test
 }
 
 
 
 void setup() {
-  pinMode(7,OUTPUT);
-  pinMode(RELAY_PIN, OUTPUT);                  // initialize digital pin as an output.
+  pinMode(7,OUTPUT);                            //sets pin 7 as an ouput
+  pinMode(8,OUTPUT);                            //sets pin 8 as an ouput
+  pinMode(RELAY_PIN, OUTPUT);                  // initialize pump pin (5) as an output.
   Serial.begin(115200); // Open serial monitor at 115200 baud to see ping results.
   
 }
@@ -90,54 +91,42 @@ void loop() {
   
   
   while (true) {
-    Serial.print("Niveau de chlore: ");
+    Serial.print("Niveau de chlore: ");//test
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
     int pourcentage = pingRes();
-    Serial.print(pingRes());
-    Serial.println("%");
+      
+    Serial.print(pingRes());//test
+    Serial.println("%");//test
 
-
-    allumerLumiere(pourcentage); // checks reservoir level to see if the fill warning light should be turned on
+    allumerLumiere(pourcentage);                        // checks reservoir level to see if the fill warning light should be turned on
     
-    
-    
-    if(pourcentage > 50){  
-      
-      
-      
+    if(pourcentage > 10){  //satefy check to make sure there is chlorine in the system before running, to prevent running the pump dry
       
       chlore_necessaire = getChloreNecessaire()*0.0295735;     //calculate how much chlorine to pump, and conversion from Oz to L
-  //******************************************************************************************************************************************      
+        
+  //******************************************if LESS than 200mL is needed for current injection, wait*****************************************      
       if (chlore_necessaire < 0.2) { //if the necessary injection amount is below 200mL, wait
 
         delay(dispenseDelay);                             // delai de une heure si le montant à ajouter est moins de 200mL
-        break;
+        break; //break 
       }   
         
-  //******************************************************************************************************************************************    
+  //******************************************if MORE than 200mL is needed for current injection, proceed**************************************   
       if (chlore_necessaire > 0.2){ //if the necessary injection amount is above 200mL
 
-        float chloreRestant =pourcentage*(reservoirFull)/100;
+        float chloreRestant =pourcentage*(reservoirFull)/100; //calculates the reservoir level in Litres
 
-        Serial.print(chloreRestant);
-        Serial.println("%");
-        Serial.print(chlore_necessaire);
-        Serial.println("%");
+        Serial.print(chloreRestant);//test
+        Serial.println("%");//test
+        Serial.print(chlore_necessaire);//test
+        Serial.println("%");//test
 
-        if (chloreRestant > chlore_necessaire){           //check si 
-                
+        if (chloreRestant > chlore_necessaire){           //checks if there is enough chlorine left in reservoir for current instance of injection
           int time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
-          allumerPompe(time);                           //active la pompe
-                 
+          allumerPompe(time);                           //active la pompe for the calculated amount of time
         } 
       } 
-
-
-
-
-
     } 
 //******************************************************************************************************************************************
-    break;                                            // le break est important ici
-  }
+  }//end of while loop
 }
