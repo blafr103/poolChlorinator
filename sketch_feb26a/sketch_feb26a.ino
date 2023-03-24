@@ -81,6 +81,8 @@ bool ensemble = false;
 
 void loop(int pourcentage) {
   
+  int pourcentage1 = pourcentage ; 
+  
   while (true) {
     
     chlore_necessaire = getChloreNecessaire()*0.0295735;//conversion from Oz to L
@@ -96,14 +98,14 @@ void loop(int pourcentage) {
     
     if (chlore_necessaire > 0.2){
 
-      float chloreRestant = getNiveauChlore()*(reservoirFull)/100;
+      float chloreRestant =pourcentage1*(reservoirFull)/100;
       
       if (chloreRestant > chlore_necessaire){ 
                
         int daysLeft = (chloreRestant/dailyAV) - 1;   //dailyAV to be more accurately defined, algo to calculate how many days worth of chlorine left
           
         if(daysLeft<=alerte_nbr_jours){
-          allumerLumiere(pourcentage);
+          allumerLumiere(pourcentage1);
         }
         
         int time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
@@ -112,7 +114,7 @@ void loop(int pourcentage) {
       } 
       
       if (chloreRestant < chlore_necessaire){
-        allumerLumiere(pourcentage);                  //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
+        allumerLumiere(pourcentage1);                  //allumer la lumiere et apres il faut arreter le programme (break) ou recommencer toute la boucle ?
                                                       // ou ca peut etre inclus dans la fonction allumerLumiere()
       }
     }
