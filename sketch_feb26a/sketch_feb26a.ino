@@ -102,7 +102,7 @@ int main() {
   while (true) {
     Serial.print("Niveau de chlore: ");//test
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
-    int pourcentage = pingRes();
+    int pourcentage = pingRes();                        //check current reservoir level and save to variable
       
     Serial.print(pingRes());//test
     Serial.println("%");//test
