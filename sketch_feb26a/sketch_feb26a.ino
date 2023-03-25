@@ -74,6 +74,7 @@ void allumerPompe(float timeX)
     
   digitalWrite(8, LOW);                       //turn off light indicating pump is off
   Serial.print("PUMP OFF"); //test
+  Serial.println("%");//test
 }
 
 
@@ -91,7 +92,7 @@ float pingRes(){
     
     
     Serial.print("pingRes"); //test
-    
+    Serial.println("%");//test
     
     float distance = sonar.ping_cm();                   // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
     float niveau = hauteur-distance;                    //cm de chlore dans le reservoir
@@ -105,7 +106,7 @@ void loop() {
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
     float pourcentage = pingRes();                        //check current reservoir level and save to variable
       
-    Serial.print("pingRes");//test
+    Serial.print("LOOPpingRes");//test
     Serial.println("%");//test
 
     allumerLumiere(pourcentage);                        // checks reservoir level to see if the fill warning light should be turned on
