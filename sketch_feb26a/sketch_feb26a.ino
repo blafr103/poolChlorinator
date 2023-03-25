@@ -15,7 +15,7 @@ float chlore_necessaire;
 int fillWarn = 25;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
 int dispenseDelay = 3600;                           //1hr delay
 int poolVolume = 14366;                             //volume de la piscine en US gallon
-int pumpRate = 0.160;                               //débit de la pompe (L/sec)
+float pumpRate = 0.160;                               //débit de la pompe (L/sec)
 int alerte_nbr_jours = 5;                           //nombre de jours que la cliente veut etre alerté avant que le réservoir est vide
 int reservoirFull = 19;                             //volume du reservoir quand il est remplit, (L)
 float dailyAV = 0.66666666666;                      //calcul aprox. de L de chlore utilisé par jours
@@ -94,7 +94,7 @@ float pingRes(){
     
     float distance = sonar.ping_cm();                   // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
     float niveau = hauteur-distance;                    //cm de chlore dans le reservoir
-    return (niveau/hauteur)*100.0;
+    return (niveau/hauteur)*100;
 }
 
 void loop() {
