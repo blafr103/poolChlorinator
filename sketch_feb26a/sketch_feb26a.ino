@@ -35,8 +35,8 @@ float getCapteurPpm()                               //maybe PPM, maybe PH, TBD**
 float getChloreNecessaire()
 {
   //faire le calcule en prennant la valuer de PH donnée par getCapteurPpm(), retourne une valeur en Oz  **********on assume sensor PH, et non PPM
-    //int PH = getCapteurPpm();
-    int PH = 6; //for test
+    //float PH = getCapteurPpm();
+    float PH = 6; //for test
     return (7.5 - PH)*(poolVolume)*0.002;      
 }
 
@@ -103,7 +103,7 @@ void loop() {
   //while (true) {
     Serial.print("Niveau de chlore: ");//test
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
-    int pourcentage = pingRes();                        //check current reservoir level and save to variable
+    float pourcentage = pingRes();                        //check current reservoir level and save to variable
       
     Serial.print("pingRes");//test
     Serial.println("%");//test
