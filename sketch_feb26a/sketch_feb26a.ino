@@ -50,8 +50,11 @@ void allumerLumiere(float pourcentage)
  Serial.println("%");//test
     
     
- if(pourc<fillWarn) digitalWrite(7, HIGH); //turn light on if reservoir below certain level
- else digitalWrite(7, LOW);                      //turn light off if reservoir above certain level
+ if(pourc<fillWarn){
+    digitalWrite(7, HIGH); //turn light on if reservoir below certain level
+ }else{
+    digitalWrite(7, LOW);                      //turn light off if reservoir above certain level
+ }
 }
 
 
