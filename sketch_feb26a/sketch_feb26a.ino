@@ -94,7 +94,7 @@ float pingRes(){
     
     float distance = sonar.ping_cm();                   // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
     float niveau = hauteur-distance;                    //cm de chlore dans le reservoir
-    return (niveau/hauteur)*100;
+    return (niveau/hauteur)*100.0;
 }
 
 void loop() {
