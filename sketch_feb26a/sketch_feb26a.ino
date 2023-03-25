@@ -16,9 +16,7 @@ int fillWarn = 25;                                  //variable pour définir le 
 int dispenseDelay = 360000;                           //1hr delay
 int poolVolume = 14366;                             //volume de la piscine en US gallon
 float pumpRate = 0.160;                               //débit de la pompe (L/sec)
-int alerte_nbr_jours = 5;                           //nombre de jours que la cliente veut etre alerté avant que le réservoir est vide
 int reservoirFull = 19;                             //volume du reservoir quand il est remplit, (L)
-float dailyAV = 0.66666666666;                      //calcul aprox. de L de chlore utilisé par jours
 int hauteur=20;                                     //hauteur du reservoir (cm)
 //*****************************************************************
 
