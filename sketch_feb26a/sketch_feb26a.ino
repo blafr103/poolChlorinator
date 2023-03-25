@@ -116,6 +116,10 @@ void loop() {
   //******************************************if LESS than 200mL is needed for current injection, wait*****************************************      
       if (chlore_necessaire < 0.2) { //if the necessary injection amount is below 200mL, wait
         
+        Serial.print("delay(1hr)");//test
+        Serial.println("%");//test
+          
+          
         delay(dispenseDelay);                             // delai de une heure si le montant à ajouter est moins de 200mL
       }   
         
