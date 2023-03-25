@@ -97,7 +97,7 @@ float pingRes(){
     return (niveau/hauteur)*100;
 }
 
-void loop() {
+int main() {
   
   while (true) {
     Serial.print("Niveau de chlore: ");//test
