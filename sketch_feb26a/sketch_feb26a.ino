@@ -144,9 +144,9 @@ void loop() {
         Serial.println("%");//test
 
         if (chloreRestant > chlore_necessaire){           //checks if there is enough chlorine left in reservoir for current instance of injection
-          float time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
+          float timeT = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
           delay(50); 
-          allumerPompe(time);                           //active la pompe for the calculated amount of time
+          allumerPompe(timeT);                           //active la pompe for the calculated amount of time
           delay(50); 
         } 
       } 
