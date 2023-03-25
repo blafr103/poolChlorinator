@@ -59,7 +59,7 @@ void allumerLumiere(float pourcentage)
 //allume aussi une lumiere en meme temps que la pompe est active
 void allumerPompe(float timeX)
 {
-  float time = timeX;
+  float timeP = timeX;
     
   Serial.print("PUMP ON"); //test
   Serial.println("%");//test
@@ -68,7 +68,7 @@ void allumerPompe(float timeX)
   digitalWrite(8, HIGH);                      //turn on light indicating pump is active
     
   digitalWrite(RELAY_PIN, HIGH);              // turn on pump for x milliseconds
-  delay(time);
+  delay(timeP);
   digitalWrite(RELAY_PIN, LOW);               // turn off pump 
   
     
