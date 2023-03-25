@@ -100,16 +100,13 @@ float pingRes(){
 }
 
 void loop() {
-  
-  //while (true) {
-    Serial.print("Niveau de chlore: ");//test
-    Serial.println(pingRes());//test
-    Serial.println("%");//test
-    
     
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
     float pourcentage = pingRes();                        //check current reservoir level and save to variable
-     
+    
+    Serial.print("Niveau de chlore: ");//test
+    Serial.println(pourcentage);//test
+    Serial.println("%");//test
     
     allumerLumiere(pourcentage);                        // checks reservoir level to see if the fill warning light should be turned on
     
@@ -146,5 +143,4 @@ void loop() {
       } 
     } 
 //******************************************************************************************************************************************
-  //}//end of while loop
 }
