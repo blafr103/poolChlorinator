@@ -42,23 +42,24 @@ float getChloreNecessaire()
 
 
 // fonction pour allumer la lumiere sur le reservoir, quand il est moins qu'un certain niveau : pourcentage<fillWarn
-void allumerLumiere(int pourcentage)
+void allumerLumiere(float pourcentage)
 {
+ float pourc = pourcentage;
     
  Serial.print("allumerLumiere");//test
  Serial.println("%");//test
     
     
- if(pourcentage<fillWarn) digitalWrite(7, HIGH); //turn light on if reservoir below certain level
+ if(pourc<fillWarn) digitalWrite(7, HIGH); //turn light on if reservoir below certain level
  else digitalWrite(7, LOW);                      //turn light off if reservoir above certain level
 }
 
 
 // fonction pour allumer la pompe pour un temps calcule
 //allume aussi une lumiere en meme temps que la pompe est active
-void allumerPompe(int timeX)
+void allumerPompe(float timeX)
 {
-  int time = timeX;
+  float time = timeX;
     
   Serial.print("PUMP ON"); //test
   Serial.println("%");//test
@@ -136,7 +137,7 @@ void loop() {
         Serial.println("%");//test
 
         if (chloreRestant > chlore_necessaire){           //checks if there is enough chlorine left in reservoir for current instance of injection
-          int time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
+          float time = chlore_necessaire*1000/pumpRate;   //calculate how long pump turns on (ms)
           allumerPompe(time);                           //active la pompe for the calculated amount of time
         } 
       } 
