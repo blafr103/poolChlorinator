@@ -106,7 +106,7 @@ int main() {
     delay(50);                                          // Wait 50ms between pings (about 20 pings/sec). 29ms should be the shortest delay between pings.
     int pourcentage = pingRes();                        //check current reservoir level and save to variable
       
-    Serial.print(pingRes());//test
+    Serial.print("pingRes");//test
     Serial.println("%");//test
 
     allumerLumiere(pourcentage);                        // checks reservoir level to see if the fill warning light should be turned on
