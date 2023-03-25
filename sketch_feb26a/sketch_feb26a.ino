@@ -13,7 +13,7 @@ float chlore_necessaire;
 
 //*****************************************************************
 int fillWarn = 25;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
-int dispenseDelay = 3600;                           //1hr delay
+int dispenseDelay = 360000;                           //1hr delay
 int poolVolume = 14366;                             //volume de la piscine en US gallon
 float pumpRate = 0.160;                               //débit de la pompe (L/sec)
 int alerte_nbr_jours = 5;                           //nombre de jours que la cliente veut etre alerté avant que le réservoir est vide
@@ -60,6 +60,8 @@ void allumerLumiere(int pourcentage)
 //allume aussi une lumiere en meme temps que la pompe est active
 void allumerPompe(int timeX)
 {
+  int time = timeX;
+    
   Serial.print("PUMP ON"); //test
   Serial.println("%");//test
   
@@ -67,7 +69,7 @@ void allumerPompe(int timeX)
   digitalWrite(8, HIGH);                      //turn on light indicating pump is active
     
   digitalWrite(RELAY_PIN, HIGH);              // turn on pump for x milliseconds
-  delay(5000);
+  delay(time);
   digitalWrite(RELAY_PIN, LOW);               // turn off pump 
   
     
