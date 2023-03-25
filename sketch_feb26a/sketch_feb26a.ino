@@ -12,8 +12,8 @@ float ppm_interval_superieur;
 float chlore_necessaire;
 
 //*****************************************************************
-int fillWarn = 40;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
-int dispenseDelay = 3600;                        //1hr delay
+int fillWarn = 25;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
+int dispenseDelay = 3600;                           //1hr delay
 int poolVolume = 14366;                             //volume de la piscine en US gallon
 int pumpRate = 0.160;                               //débit de la pompe (L/sec)
 int alerte_nbr_jours = 5;                           //nombre de jours que la cliente veut etre alerté avant que le réservoir est vide
@@ -37,10 +37,8 @@ float getCapteurPpm()                               //maybe PPM, maybe PH, TBD**
 float getChloreNecessaire()
 {
   //faire le calcule en prennant la valuer de PH donnée par getCapteurPpm(), retourne une valeur en Oz  **********on assume sensor PH, et non PPM
-  
     //int PH = getCapteurPpm();
     int PH = 6; //for test
-    
     return (7.5 - PH)*(poolVolume)*0.002;      
 }
 
@@ -48,6 +46,11 @@ float getChloreNecessaire()
 // fonction pour allumer la lumiere sur le reservoir, quand il est moins qu'un certain niveau : pourcentage<fillWarn
 void allumerLumiere(int pourcentage)
 {
+    
+ Serial.print("allumerLumiere");//test
+ Serial.println("%");//test
+    
+    
  if(pourcentage<fillWarn) digitalWrite(7, HIGH); //turn light on if reservoir below certain level
  else digitalWrite(7, LOW);                      //turn light off if reservoir above certain level
 }
@@ -58,13 +61,16 @@ void allumerLumiere(int pourcentage)
 void allumerPompe(int timeX)
 {
   Serial.print("PUMP ON"); //test
-
+  Serial.println("%");//test
+  
+    
   digitalWrite(8, HIGH);                      //turn on light indicating pump is active
     
   digitalWrite(RELAY_PIN, HIGH);              // turn on pump for x milliseconds
   delay(5000);
   digitalWrite(RELAY_PIN, LOW);               // turn off pump 
   
+    
   digitalWrite(8, LOW);                       //turn off light indicating pump is off
   Serial.print("PUMP OFF"); //test
 }
@@ -81,14 +87,17 @@ void setup() {
 
 
 float pingRes(){
+    
+    
+    Serial.print("pingRes"); //test
+    
+    
     float distance = sonar.ping_cm();                   // Send ping, get distance in cm and print result (0 = outside set distance range), distance entre detecteur et chlore
     float niveau = hauteur-distance;                    //cm de chlore dans le reservoir
     return (niveau/hauteur)*100;
 }
 
 void loop() {
-  
-  
   
   while (true) {
     Serial.print("Niveau de chlore: ");//test
@@ -106,18 +115,19 @@ void loop() {
         
   //******************************************if LESS than 200mL is needed for current injection, wait*****************************************      
       if (chlore_necessaire < 0.2) { //if the necessary injection amount is below 200mL, wait
-
+        
         delay(dispenseDelay);                             // delai de une heure si le montant à ajouter est moins de 200mL
-        break; //break 
       }   
         
   //******************************************if MORE than 200mL is needed for current injection, proceed**************************************   
       if (chlore_necessaire > 0.2){ //if the necessary injection amount is above 200mL
 
         float chloreRestant =pourcentage*(reservoirFull)/100; //calculates the reservoir level in Litres
-
+           
+        Serial.print("chloreRestant: ");//test
         Serial.print(chloreRestant);//test
         Serial.println("%");//test
+        Serial.print("chlore_necessaire: ");//test
         Serial.print(chlore_necessaire);//test
         Serial.println("%");//test
 
