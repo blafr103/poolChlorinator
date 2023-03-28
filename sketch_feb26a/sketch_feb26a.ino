@@ -49,8 +49,11 @@ float getCapteurPpm()                               //maybe PPM, maybe PH, TBD**
 float getChloreNecessaire()
 {
   //faire le calcule en prennant la valuer de PH donnée par getCapteurPpm(), retourne une valeur en Oz  **********on assume sensor PH, et non PPM
-    //float PH = getCapteurPpm();
-    float PH = 6; //for test
+    
+    //float PH = 6; //for test
+    
+    
+    float PH = getCapteurPpm();
     return (7.5 - PH)*(poolVolume)*0.002;      
 }
 
