@@ -9,7 +9,7 @@
 #define ANALOGIN A0                                 //PH sensor pin
 
 float chlore_necessaire;
-float calibration_value = 0.0;                      //to calibrate PH sensor offset
+
 
 //*****************************************************************
 int fillWarn = 25;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
@@ -18,6 +18,7 @@ int poolVolume = 14366;                             //volume de la piscine en US
 float pumpRate = 0.160;                               //débit de la pompe (L/sec)
 int reservoirFull = 19;                             //volume du reservoir quand il est remplit, (L)
 int hauteur=20;                                     //hauteur du reservoir (cm)
+float calibration_value = 0.0;                      //to calibrate PH sensor offset
 //*****************************************************************
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
