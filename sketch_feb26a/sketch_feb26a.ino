@@ -35,7 +35,7 @@ float getCapteurPpm()                               //maybe PPM, maybe PH, TBD**
         delay(30);
     }
     
-    avg = temp/10;                      //take the average of these 10 samples
+    float avg = temp/10;                      //take the average of these 10 samples
     
     float volt = avg * 5.0/1024/10;
     float ph = -5.70 * volt + calibration_value;
