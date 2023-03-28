@@ -6,10 +6,10 @@
 #define ECHO_PIN     2                              // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 100                            // Maximum distance we want to ping for (in centimeters).
 #define RELAY_PIN 5                                // the Arduino pin, which connects to the IN pin of relay, for the pump
+#define ANALOGIN A0                                 //PH sensor pin
 
-float ppm_interval_inferieur;
-float ppm_interval_superieur;
 float chlore_necessaire;
+float calibration_value = 0.0;                      //to calibrate PH sensor offset
 
 //*****************************************************************
 int fillWarn = 25;                                  //variable pour définir le pourcentage dont la lumière du niveau réservoir s'allume , un pourcentage (15%)
@@ -22,11 +22,24 @@ int hauteur=20;                                     //hauteur du reservoir (cm)
 
 NewPing sonar(TRIGGER_PIN, ECHO_PIN, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
 
+
+
 // fonction pour lire le capteur de ppm
 //*************************TO DO********************
 float getCapteurPpm()                               //maybe PPM, maybe PH, TBD************
 {   
-    float ph = 0;
+    float temp = 0;
+    
+    for(int i=0;i<10;i++){              //take 10 sample readings
+        temp+=analogRead(A0);
+        delay(30);
+    }
+    
+    avg = temp/10;                      //take the average of these 10 samples
+    
+    float volt = avg * 5.0/1024/10;
+    float ph = -5.70 * volt + calibration_value;
+        
     return ph;
 }
 
