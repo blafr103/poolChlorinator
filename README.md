@@ -50,7 +50,7 @@ Full bill of materials with quantities and costs is in [Deliverable C](docs/GNG2
 
 ## Firmware
 
-Source: [`src/chlorine_dispenser.ino`](src/chlorine_dispenser.ino)
+Source: [`src/chlorine_dispenser.ino`](src/chlorine_dispenser/chlorine_dispenser.ino)
 
 Dependencies: [`NewPing`](https://bitbucket.org/teckel12/arduino-new-ping/) for the ultrasonic sensor.
 
