@@ -46,7 +46,7 @@ A one-directional injection tee feeds chlorine into the existing pool plumbing. 
 | PEX plumbing, valves, tees | Distribution and refill paths |
 | Reservoir + enclosure | Chlorine storage, weatherproofed |
 
-Full bill of materials with quantities and costs is in [Deliverable C](docs/GNG2501_-_Livrable_C.pdf).
+Full bill of materials with quantities and costs is in [Deliverable C](docs/GNG2501%20-%20Livrable%20C.pdf).
 
 ## Firmware
 
@@ -68,7 +68,7 @@ Control-flow diagram: `images/code_flowchart.png` (export Figure 3 from Delivera
 
 **Prototype 1 - breadboard.** Ultrasonic level sensing with LED alerts, validated against a ruler. Level accuracy stayed within roughly 4% at 10 cm and tightened to under 2% at 40 cm. Low-level alerting triggered within a few tenths of a percent of the 20% threshold.
 
-**Prototype 2 - full build.** Plumbed enclosure with reservoir, PEX distribution and refill paths, and mounted electronics. Assemble/disassemble time was tested with independent users and came in well under the 30-minute target. Sealing and equivalent-length pressure-loss tests are documented in [Deliverable E](docs/GNG2501_-_Livrable_E.pdf).
+**Prototype 2 - full build.** Plumbed enclosure with reservoir, PEX distribution and refill paths, and mounted electronics. Assemble/disassemble time was tested with independent users and came in well under the 30-minute target. Sealing and equivalent-length pressure-loss tests are documented in [Deliverable E](docs/GNG2501%20-%20Livrable%20E.pdf).
 
 Photos:
 - `images/prototype1_circuit.png` (Deliverable D)
@@ -103,9 +103,9 @@ Photos:
 Full design process, in French (uOttawa GNG2501):
 
 - [Deliverable B](docs/GNG2501%20-%20Livrable%20B_mod.pdf) - problem definition, needs analysis, benchmarking, target specs, concept development
-- [Deliverable C](docs/GNG2501_-_Livrable_C.pdf) - detailed design, bill of materials, code-flow diagram
-- [Deliverable D](docs/GNG2501_-_Livrable_D.pdf) - prototype 1 and level-sensing test results
-- [Deliverable E](docs/GNG2501_-_Livrable_E.pdf) - design constraints and full physical prototype
+- [Deliverable C](docs/GNG2501%20-%20Livrable%20C.pdf) - detailed design, bill of materials, code-flow diagram
+- [Deliverable D](docs/GNG2501%20-%20Livrable%20D.pdf) - prototype 1 and level-sensing test results
+- [Deliverable E](docs/GNG2501%20-%20Livrable%20E.pdf) - design constraints and full physical prototype
 
 ## Retrospective notes
 
