@@ -80,7 +80,13 @@ Photos:
 .
 ├── README.md
 ├── src/
-│   └── chlorine_dispenser.ino
+│   └── chlorine_dispenser/
+│       └── chlorine_dispenser.ino
+├── experiments/
+│   ├── pump_alone/
+│   │   └── pump_alone.ino
+│   └── chlore_level_detector/
+│       └── Detecteur_niveau_chlore_copy_20230318203757.ino
 ├── docs/
 │   ├── GNG2501_-_Livrable_B.pdf
 │   ├── GNG2501_-_Livrable_C.pdf
@@ -117,3 +123,4 @@ My primary contributions were the embedded firmware and the Arduino/electronics 
 ## Course context
 
 GNG2501B - Engineering Design, Faculty of Engineering, University of Ottawa, Winter 2023. Client-driven accessibility project.
+*NOTE* - PDF documents may have mis-typed year in date mentions. Any reference to 2022 should be 2023.
