@@ -1,5 +1,4 @@
 # Cholomatic - Automated Liquid Chlorine Dispenser
-## Built as a Winter 2023 semester-long project for `GNG2501 - Introduction à la gestion et au développement de produit en génie et en informatique` 
 
 An Arduino-based system that monitors an above-ground pool and doses liquid chlorine automatically, built as a client-driven accessibility project. The client has reduced mobility, so the goal was to remove the physical effort and manual chemistry-testing from routine pool maintenance.
 
@@ -122,5 +121,5 @@ My primary contributions were the embedded firmware and the Arduino/electronics 
 
 ## Course context
 
-GNG2501B - Engineering Design, Faculty of Engineering, University of Ottawa, Winter 2023. Client-driven accessibility project.
+GNG2501 - Introduction à la gestion et au développement de produit en génie et en informatique - Engineering Design, Faculty of Engineering, University of Ottawa, Winter 2023. Client-driven accessibility project.
 *NOTE* - PDF documents may have mis-typed year in date mentions. Any reference to 2022 should be 2023.
