@@ -87,10 +87,10 @@ Photos:
 │   └── chlore_level_detector/
 │       └── Detecteur_niveau_chlore_copy_20230318203757.ino
 ├── docs/
-│   ├── GNG2501_-_Livrable_B.pdf
-│   ├── GNG2501_-_Livrable_C.pdf
-│   ├── GNG2501_-_Livrable_D.pdf
-│   └── GNG2501_-_Livrable_E.pdf
+│   ├── GNG2501 - Livrable B_mod.pdf
+│   ├── GNG2501 - Livrable C.pdf
+│   ├── GNG2501 - Livrable D.pdf
+│   └── GNG2501 - Livrable E.pdf
 └── images/
     ├── code_flowchart.png
     ├── prototype1_circuit.png
