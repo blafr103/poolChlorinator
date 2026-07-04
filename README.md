@@ -102,7 +102,7 @@ Photos:
 
 Full design process, in French (uOttawa GNG2501):
 
-- [Deliverable B](docs/GNG2501_-_Livrable_B.pdf) - problem definition, needs analysis, benchmarking, target specs, concept development
+- [Deliverable B](docs/GNG2501%20-%20Livrable%20B_mod.pdf) - problem definition, needs analysis, benchmarking, target specs, concept development
 - [Deliverable C](docs/GNG2501_-_Livrable_C.pdf) - detailed design, bill of materials, code-flow diagram
 - [Deliverable D](docs/GNG2501_-_Livrable_D.pdf) - prototype 1 and level-sensing test results
 - [Deliverable E](docs/GNG2501_-_Livrable_E.pdf) - design constraints and full physical prototype
