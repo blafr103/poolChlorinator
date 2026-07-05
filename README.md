@@ -115,7 +115,7 @@ The firmware carries later annotations flagging issues found on review, kept in 
 
 ## Team and contributions
 
-Four-person team for GNG2501 (Team Cholomatic): Bangali Traoré, Benoit Lafrance, Imad Eddin Tijani, Nyckolas Gagné.
+Four-person team for GNG2501 (Team Cholomatic): Benoit Lafrance, Imad Eddin Tijani, Nyckolas Gagné, Bangali Traoré.
 
 My primary contributions were the embedded firmware and the Arduino/electronics integration.
 
