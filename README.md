@@ -1,6 +1,6 @@
 # Cholomatic - Automated Liquid Chlorine Dispenser
 
-An Arduino-based system that monitors an above-ground pool and doses liquid chlorine automatically, built as a client-driven accessibility project. The client has reduced mobility, so the goal was to remove the physical effort and manual chemistry-testing from routine pool maintenance.
+An Arduino-based system that monitors an above-ground pool and doses liquid chlorine automatically, built as a client-driven accessibility group project. The client has reduced mobility, so the goal was to remove the physical effort and manual chemistry-testing from routine pool maintenance.
 
 > **🏆 Category winner - Accessibility 4, uOttawa Faculty of Engineering Design Day, Winter 2023 (Team Cholomatic).**
 > Publicly listed at [uOttawa CEED - Past Winners](https://www.uottawa.ca/faculty-engineering/centre-entrepreneurship-engineering-design/past-winners) under the 2022-2023 year filter.
